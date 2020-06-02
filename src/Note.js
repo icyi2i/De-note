@@ -18,25 +18,31 @@ class Note extends Component {
     editNote = function(){
         this.setState({ editingMode: true})
     }
-    saveNote = function(event){
-        event.preventDefault()
+    saveNote = function(e){
+        e.preventDefault()
+        console.log("save_note")
+        this.props.onUpdate(this.props.id, this.new_title.value, this.new_text.value)
         this.setState({ editingMode: false})
     }
     deleteNote = function(){
-        alert("deleting")
+        this.props.onRemove(this.props.id)
     }
 
     renderEditingMode(){
         return ( 
             <div className="note col-12 col-sm-6 col-md-4 col-lg-3 my-3">
                 <div className="card">
-                    <form className="d-contents">
+                    <form className="d-contents"  onSubmit={this.saveNote}>
                         <div className="card-body">
-                            <input className="card-title form-control" type="text" id="input-note-title" defaultValue={this.props.title}/>
-                            <textarea className="card-text form-control" defaultValue={this.props.text}/>
+                            <input className="card-title form-control"
+                                type="text" ref={input => this.new_title = input}
+                                id="input-note-title" defaultValue={this.props.title}/>
+                            <textarea className="card-text form-control"
+                                ref={input => this.new_text = input}
+                                defaultValue={this.props.text}/>
                         </div>
                         <div className="card-footer">
-                            <button type="submit" onClick={this.saveNote} className="btn btn-outline-primary"><FaSave /></button>
+                            <button type="submit" className="btn btn-outline-primary"><FaSave /></button>
                         </div>
                     </form>
                 </div>
@@ -46,7 +52,7 @@ class Note extends Component {
 
     renderDefaultMode() { 
         return ( 
-            <div className="note col-12 col-sm-6 col-md-4 col-lg-3 my-3">
+            <div id={this.props.id} className="note col-12 col-sm-6 col-md-4 col-lg-3 my-3">
                 <div className="card">
                     <div className="card-body">
                         <h5 className="card-title">{this.props.title}</h5>
@@ -55,18 +61,14 @@ class Note extends Component {
                     <div className="card-footer">
                         <button className="btn btn-outline-dark"><RiDragMove2Line /></button>
                         <button onClick={this.editNote} className="btn btn-outline-info"><FaPencilAlt /></button>
-                        <button onclick={this.deleteNote} className="btn btn-outline-danger"><FaTrash /></button>
+                        <button onClick={this.deleteNote} className="btn btn-outline-danger"><FaTrash /></button>
                     </div>
                 </div>
             </div>
          )
     }
     render (){
-        if (this.state.editingMode) {
-            return this.renderEditingMode()
-        } else {
-            return this.renderDefaultMode()
-        }
+        return this.state.editingMode ? this.renderEditingMode() : this.renderDefaultMode()
     }
 }
  
