@@ -23,4 +23,17 @@ code {
 }
 .note .card{
   background-color: var(--color-note);
+  min-height: 100%;
+}
+
+.form-control, .form-control:focus{
+  border: 1px solid #2222;
+  background-color: #0000;
+}
+#board{
+  min-height: 100vh;
+  min-width: 100%;
+}
+.d-contents{
+  display: contents;
 }
