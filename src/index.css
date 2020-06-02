@@ -1,5 +1,5 @@
 :root{
-  --color-note: #ffec4d;
+  --color-note: #fff9c3;
 }
 body {
   margin: 0;
@@ -36,4 +36,12 @@ code {
 }
 .d-contents{
   display: contents;
+}
+.card-body{
+  display: flex;
+  flex-direction: column;
+}
+.card-body textarea{
+  flex: -webkit-available;
+  flex: -moz-available;
 }

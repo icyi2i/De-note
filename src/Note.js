@@ -32,8 +32,8 @@ class Note extends Component {
                 <div className="card">
                     <form className="d-contents">
                         <div className="card-body">
-                            <input className="card-title form-control" type="text" id="input-note-title"/>
-                            <textarea className="card-text form-control" rows={5}/>
+                            <input className="card-title form-control" type="text" id="input-note-title" defaultValue={this.props.title}/>
+                            <textarea className="card-text form-control" defaultValue={this.props.text}/>
                         </div>
                         <div className="card-footer">
                             <button type="submit" onClick={this.saveNote} className="btn btn-outline-primary"><FaSave /></button>
