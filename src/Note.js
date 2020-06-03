@@ -30,7 +30,7 @@ class Note extends Component {
 
     renderEditingMode(){
         return ( 
-            <div className="note col-12 col-sm-6 col-md-4 col-lg-3 my-3">
+            <div className="note col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2_4 col-xxl-2 my-3">
                 <div className="card">
                     <form className="d-contents"  onSubmit={this.saveNote}>
                         <div className="card-body">
@@ -39,7 +39,7 @@ class Note extends Component {
                                 id="input-note-title" defaultValue={this.props.title}/>
                             <textarea className="card-text form-control"
                                 ref={input => this.new_text = input}
-                                defaultValue={this.props.text}/>
+                                defaultValue={this.props.text} rows={7}/>
                         </div>
                         <div className="card-footer">
                             <button type="submit" className="btn btn-outline-primary"><FaSave /></button>
@@ -52,7 +52,7 @@ class Note extends Component {
 
     renderDefaultMode() { 
         return ( 
-            <div id={this.props.id} className="note col-12 col-sm-6 col-md-4 col-lg-3 my-3">
+            <div id={this.props.id} className="note col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2_4 col-xxl-2 my-3">
                 <div className="card">
                     <div className="card-body">
                         <h5 className="card-title">{this.props.title}</h5>

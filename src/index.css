@@ -1,5 +1,6 @@
 :root{
   --color-note: #fff9c3;
+  --color-light: #f5f5f5;
 }
 body {
   margin: 0;
@@ -17,12 +18,15 @@ code {
 
 .btn{
   margin-right: 10px;
+  background-color: var(--color-light);
 }
 .btn svg{
   vertical-align: initial;
 }
 .note .card{
   background-color: var(--color-note);
+}
+.card{
   min-height: 100%;
 }
 
@@ -33,6 +37,7 @@ code {
 #board{
   min-height: 100vh;
   min-width: 100%;
+  padding-bottom: 200px!important;
 }
 .d-contents{
   display: contents;
@@ -44,4 +49,46 @@ code {
 .card-body textarea{
   flex: -webkit-available;
   flex: -moz-available;
+}
+#add-note-btn{
+  position: fixed;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+#add-note-btn > svg{
+  min-width: 80%;
+  height: auto;
+  margin: auto;
+}
+
+@media screen and (min-width: 576px) {
+  
+}
+
+@media screen and (min-width: 768px) {
+  
+}
+
+@media screen and (min-width: 992px) {
+  
+}
+
+
+@media screen and (min-width: 1368px) {
+  .col-xl-2_4{
+    max-width: 20%!important;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .col-xxl-2{
+    max-width: 16.66%!important;
+  }
 }

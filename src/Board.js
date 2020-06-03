@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Note from './Note'
+import AddNoteButton from './AddNoteButton'
 
 class Board extends Component {
     constructor(props) {
@@ -56,7 +57,14 @@ class Board extends Component {
             })
         )
     }
-
+    
+    create_note = function(new_title, new_text){
+        this.setState(
+            (prevState) => ({
+                notes : [...prevState.notes, {id:Date.now() , title:new_title, text:new_text}]
+            })
+        )
+    }
 
     render_each_note = function(note){
         return (
@@ -76,6 +84,7 @@ class Board extends Component {
                 <div className="row m-0 p-0">
                     {this.state.notes.map(this.render_each_note)}
                 </div>
+                <AddNoteButton onAdd={this.create_note}/>
             </div>
         )
     }
