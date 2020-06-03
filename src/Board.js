@@ -59,9 +59,10 @@ class Board extends Component {
     }
     
     create_note = function(new_title, new_text){
+        const new_id = Date.now()
         this.setState(
             (prevState) => ({
-                notes : [...prevState.notes, {id:Date.now() , title:new_title, text:new_text}]
+                notes : [...prevState.notes, {id:new_id, title:new_title, text:new_text}]
             })
         )
     }

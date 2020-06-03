@@ -70,7 +70,7 @@ class Note extends Component {
                             <button onClick={this.enterDefaultMode} type="button" className="close" data-dismiss="modal"
                                 aria-label="Close"><span>&times;</span></button>
                         </div>
-                        <div className="modal-body">
+                        <div onClick={this.enterEditingMode} className="modal-body">
                             <p className="custom-note-scrollbar">{this.props.text}</p>
                         </div>
                         <div className="modal-footer">
@@ -83,6 +83,23 @@ class Note extends Component {
                 </div>
             </div>
         )
+    }
+    componentDidMount(){
+        if((Date.now()-this.props.id) < 5000){
+            this.setState({mode:this.EDITING_MODE})
+        }
+    }
+    componentDidUpdate(){
+        var textArea
+        if(this.state.mode === this.EDITING_MODE){
+            textArea = this.new_text
+            textArea.focus()
+            textArea.select()
+        }
+    }
+
+    shouldComponentUpdate(nextProps, nextState){
+        return nextProps.children !== this.props.children || this.state !== nextState
     }
 
     renderEditingMode(){
