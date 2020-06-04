@@ -6,34 +6,10 @@ class Board extends Component {
     constructor(props) {
         super(props)
         this.state = { 
-            notes : [
-                {
-                    title: "physical brush teacher cause exact dust",
-                    text: "divide examine describe affect occasionally pattern system refer won it tears lack wonder white introduced wrong grow frozen metal imagine escape riding scientist cover",
-                    id: 0
-                },
-                {
-                    title: "court pretty invented tail",
-                    text: "tribe walk swung town draw travel help thousand usually breathing swept dry prepare correctly ready shoot charge pilot anyway throughout board went origin queen",
-                    id: 1
-                },
-                {
-                    title: "breeze guard calm orange military",
-                    text: "above among idea purpose open out anyone your well member environment function further pound steady possibly church substance develop during actually cap tropical event",
-                    id: 2
-                },
-                {
-                    title: "bad split slowly courage score",
-                    text: "fed powder wide those describe needed nice other either electric strange spread cross native command buy sand corn oldest combine nodded judge too brave",
-                    id: 3
-                },
-                {
-                    title: "us how jar",
-                    text: "arrange silence cook rather weather cheese pocket uncle yourself teacher prepare wrong supply observe corn rising replace quite dance final living headed warm split",
-                    id: 4
-                }
-            ]
+            notes : []
         }
+        this.componentDidMount = this.componentDidMount.bind(this)
+        this.componentDidUpdate = this.componentDidUpdate.bind(this)
         this.create_note = this.create_note.bind(this)
         this.update_note = this.update_note.bind(this)
         this.remove_note = this.remove_note.bind(this)
@@ -44,7 +20,11 @@ class Board extends Component {
         this.setState(
             (prevState) => ({
                 notes : prevState.notes.map(
-                    (note) => ( id !== note.id) ? note : {...note, title:new_title, text:new_text}
+                    (note) => ( id !== note.id) ? note : {
+                        ...note,
+                        title : new_title,
+                        text : new_text
+                    }
                 )
             })
         )
@@ -62,9 +42,38 @@ class Board extends Component {
         const new_id = Date.now()
         this.setState(
             (prevState) => ({
-                notes : [...prevState.notes, {id:new_id, title:new_title, text:new_text}]
+                notes : [...prevState.notes, {
+                    id : new_id,
+                    title : new_title,
+                    text : new_text
+                }]
             })
         )
+    }
+
+    componentDidMount(){
+        let loaded_notes = JSON.parse(localStorage.getItem("notes"))
+
+        if(loaded_notes === null || loaded_notes.length === 0){
+            loaded_notes = [
+                    {
+                        title: "Sample note",
+                        text:   
+                            ["This is a demo-version of the application.",
+                            "The notes are stored in localStorage!",
+                            "Click here to view the note!",
+                            "Click this text or the edit button to edit.",
+                            "Click on Save button to update the changes!"
+                        ].join("\n"),
+                        id: 1
+                    }
+                ]
+            }
+        this.setState(()=>({notes : loaded_notes}))
+    }
+
+    componentDidUpdate(){
+        localStorage.setItem("notes", JSON.stringify(this.state.notes))
     }
 
     render_each_note = function(note){
@@ -81,7 +90,7 @@ class Board extends Component {
 
     render() { 
         return (
-            <div id="board" className="bg-dark">
+            <div id="board">
                 <div className="row m-0 p-0">
                     {this.state.notes.map(this.render_each_note)}
                 </div>
