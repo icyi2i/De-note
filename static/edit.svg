@@ -1,0 +1,23 @@
+
+<svg viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <g class="layer">
+  <title>Edit</title>
+	<!--  BOX  -->
+	<path fill="#0000" stroke="#333333" stroke-width="25"
+				d="m240,40 l -160,0 c 0,0 -40,0 -40,40 l 0,480 c 0,0 0,40 40,40 l 480,0 c 0,0 40,0 40,-40 l 0,-200"
+				stroke-linecap="round" stroke-linejoin="round"/>
+	 
+	<circle cx="560" cy="80" r="70" fill="#e63946" stroke="#333333"
+					stroke-width="20"/>
+
+	<path fill="#ffe066" stroke="#333333" stroke-width="20"
+				d="m160,480 l 40,-140 l 300,-300 l 100,100 l -300,300z"
+				stroke-linecap="round" stroke-linejoin="round"/>
+	
+	<path fill="#ffbf69" stroke="#333333" stroke-width="20"
+				d="m160,480 l 45,-145 l 100,100 z"
+				stroke-linecap="round" stroke-linejoin="round"/>
+	 <line x1="240" y1="360" x2="530" y2="70"  stroke="#333333" stroke-width="20"/>
+	 <line x1="280" y1="400" x2="570" y2="110"  stroke="#333333" stroke-width="20"/>
+ </g>
+</svg>
