@@ -14,8 +14,8 @@ class AddNoteButton extends Component {
 
     render() { 
         return ( 
-            <div onClick={this.addNote} id="add-note-btn" className="btn btn-outline-success">
-                <FaPlus />
+            <div onClick={this.addNote} id="add-note-btn" role="button"
+                className="btn btn-success"><FaPlus />
             </div>
         )
     }

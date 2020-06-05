@@ -76,6 +76,10 @@ class Board extends Component {
         localStorage.setItem("notes", JSON.stringify(this.state.notes))
     }
 
+    componentWillReceiveProps(){
+        this.setState({notes:[]})
+    }
+
     render_each_note = function(note){
         return (
             <Note
